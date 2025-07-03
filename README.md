@@ -34,6 +34,27 @@ A stunning, interactive 3D visualization of our solar system built with Three.js
 ### No Build Process Required!
 This project uses vanilla JavaScript and CDN-hosted libraries.
 
+## 🌐 Live Demo & Deployment
+
+### Deploy to Vercel (1-Click)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/3d-solar-system-visualizer)
+
+### Manual Deployment
+This project is optimized for deployment on Vercel, Netlify, GitHub Pages, or any static hosting service.
+
+**Vercel Deployment**:
+```bash
+npm i -g vercel
+vercel
+```
+
+**GitHub Pages**:
+1. Push to GitHub repository
+2. Enable GitHub Pages in repository settings
+3. Set source to main branch
+
+See `DEPLOYMENT.md` for detailed deployment instructions.
+
 ## 🎮 Usage Instructions
 
 ### Controls

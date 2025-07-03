@@ -1,0 +1,28 @@
+{
+  "name": "3d-solar-system-visualizer",
+  "version": "1.0.0",
+  "description": "Interactive 3D Solar System Visualizer built with Three.js and vanilla JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 3000",
+    "build": "echo 'No build process needed for static site'",
+    "start": "python -m http.server 8080"
+  },
+  "keywords": [
+    "threejs",
+    "3d",
+    "solar-system",
+    "javascript",
+    "visualization",
+    "astronomy"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/3d-solar-system-visualizer.git"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
