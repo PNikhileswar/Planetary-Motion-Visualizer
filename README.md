@@ -112,23 +112,6 @@ Planetary-Motion-Visualizer/
 - **Edge** 79+ ✅
 - **Mobile browsers** supported ✅
 
-## 🎬 Demo Video
-
-Follow the guidelines in `DEMO_INSTRUCTIONS.md` for creating the demo video that showcases:
-1. 3D solar system in motion
-2. Real-time speed control functionality
-3. Interactive features and bonus elements
-4. Code structure overview
-
-## 📄 Assignment Requirements Met
-
-✅ **3D Solar System**: All 8 planets orbiting the Sun  
-✅ **Speed Control**: Real-time individual planet speed adjustment  
-✅ **Pause/Resume**: Animation control functionality  
-✅ **Three.js Implementation**: Pure JavaScript with Three.js (no CSS animations)  
-✅ **Responsive Design**: Mobile-friendly interface  
-✅ **Clean Code**: Modular architecture with clear documentation  
-
 ## 🙏 Technologies Used
 
 - **Three.js** - 3D graphics and WebGL rendering
