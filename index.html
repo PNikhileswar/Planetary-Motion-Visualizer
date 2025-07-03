@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Solar System Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>🌟 3D Solar System Visualizer</h1>
+            <div class="header-controls">
+                <button id="pauseBtn" class="control-btn">⏸️ Pause</button>
+                <button id="themeToggle" class="control-btn">🌙 Dark Mode</button>
+            </div>
+        </header>
+
+        <!-- Main 3D Scene Container -->
+        <div id="scene-container">
+            <canvas id="three-canvas"></canvas>
+            
+            <!-- Planet Info Tooltip -->
+            <div id="planet-tooltip" class="tooltip"></div>
+            
+            <!-- Loading Screen -->
+            <div id="loading" class="loading">
+                <div class="loading-spinner"></div>
+                <p>Loading Solar System...</p>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel" id="controlPanel">
+            <div class="panel-header">
+                <h3>🎛️ Orbital Speed Controls</h3>
+                <button id="togglePanel" class="toggle-btn">▼</button>
+            </div>
+            
+            <div class="panel-content" id="panelContent">
+                <!-- Global Controls -->
+                <div class="control-group global-controls">
+                    <h4>Global Controls</h4>
+                    <div class="control-item">
+                        <label for="globalSpeed">Global Speed:</label>
+                        <input type="range" id="globalSpeed" min="0" max="5" step="0.1" value="1">
+                        <span id="globalSpeedValue">1.0x</span>
+                    </div>
+                    <button id="resetSpeeds" class="control-btn reset-btn">Reset All Speeds</button>
+                </div>
+
+                <!-- Individual Planet Controls -->
+                <div class="control-group planet-controls">
+                    <h4>Individual Planet Controls</h4>
+                    <div id="planet-speed-controls">
+                        <!-- Planet controls will be dynamically generated -->
+                    </div>
+                </div>
+
+                <!-- Camera Controls -->
+                <div class="control-group camera-controls">
+                    <h4>Camera Controls</h4>
+                    <div class="control-item">
+                        <label for="cameraDistance">Distance:</label>
+                        <input type="range" id="cameraDistance" min="50" max="200" step="5" value="100">
+                        <span id="cameraDistanceValue">100</span>
+                    </div>
+                    <button id="resetCamera" class="control-btn">Reset Camera</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Panel -->
+        <div class="info-panel">
+            <h4>Instructions</h4>
+            <ul>
+                <li>🖱️ Click and drag to rotate view</li>
+                <li>🔄 Scroll to zoom in/out</li>
+                <li>🎯 Hover over planets for info</li>
+                <li>🎛️ Use controls to adjust speeds</li>
+                <li>⏸️ Pause/resume animation</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    
+    <!-- Configuration -->
+    <script src="js/config/planets.js"></script>
+    <script src="js/config/settings.js"></script>
+    <script src="js/config/defaults.js"></script>
+    
+    <!-- Core System -->
+    <script src="js/core/sceneManager.js"></script>
+    <script src="js/core/planetFactory.js"></script>
+    <script src="js/core/planetManager.js"></script>
+    
+    <!-- Animation System -->
+    <script src="js/animation/animationController.js"></script>
+    <script src="js/animation/orbitalCalculator.js"></script>
+    
+    <!-- UI Components -->
+    <script src="js/ui/controlPanel.js"></script>
+    <script src="js/ui/headerControls.js"></script>
+    <script src="js/ui/tooltipManager.js"></script>
+    
+    <!-- Utilities -->
+    <script src="js/utils/interactionHandler.js"></script>
+    <script src="js/utils/starfieldGenerator.js"></script>
+    <script src="js/utils/cameraController.js"></script>
+    <script src="js/utils/notificationSystem.js"></script>
+    <script src="js/utils/keyboardHandler.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/app.js"></script>
+    <script src="js/init.js"></script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module Loading Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+            padding: 20px;
+            margin: 0;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .success { background: #4CAF50; }
+        .error { background: #f44336; }
+        .loading { background: #ff9800; }
+        .icon { margin-right: 10px; font-size: 16px; }
+        .module-section {
+            margin: 20px 0;
+            border: 1px solid #333;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        h2 { color: #4CAF50; margin-top: 0; }
+        .count { font-weight: bold; color: #ffeb3b; }
+    </style>
+</head>
+<body>
+    <h1>🚀 3D Solar System - Module Loading Test</h1>
+    
+    <div class="module-section">
+        <h2>📁 Configuration Modules</h2>
+        <div id="config-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>⚙️ Core System Modules</h2>
+        <div id="core-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>🎬 Animation System</h2>
+        <div id="animation-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>🎨 UI Components</h2>
+        <div id="ui-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>🛠️ Utilities</h2>
+        <div id="utils-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>🏛️ Main Application</h2>
+        <div id="app-tests"></div>
+    </div>
+    
+    <div class="module-section">
+        <h2>📊 Summary</h2>
+        <div id="summary"></div>
+    </div>
+
+    <!-- Load all modules in order -->
+    
+    <!-- Configuration -->
+    <script src="js/config/planets.js"></script>
+    <script src="js/config/settings.js"></script>
+    <script src="js/config/defaults.js"></script>
+    
+    <!-- Core System -->
+    <script src="js/core/sceneManager.js"></script>
+    <script src="js/core/planetFactory.js"></script>
+    <script src="js/core/planetManager.js"></script>
+    
+    <!-- Animation System -->
+    <script src="js/animation/animationController.js"></script>
+    <script src="js/animation/orbitalCalculator.js"></script>
+    
+    <!-- UI Components -->
+    <script src="js/ui/controlPanel.js"></script>
+    <script src="js/ui/headerControls.js"></script>
+    <script src="js/ui/tooltipManager.js"></script>
+    
+    <!-- Utilities -->
+    <script src="js/utils/interactionHandler.js"></script>
+    <script src="js/utils/starfieldGenerator.js"></script>
+    <script src="js/utils/cameraController.js"></script>
+    <script src="js/utils/notificationSystem.js"></script>
+    <script src="js/utils/keyboardHandler.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/app.js"></script>
+    <script src="js/init.js"></script>
+
+    <script>
+        // Test script to verify all modules loaded correctly
+        function addTestResult(containerId, name, success, details = '') {
+            const container = document.getElementById(containerId);
+            const div = document.createElement('div');
+            div.className = `test-result ${success ? 'success' : 'error'}`;
+            div.innerHTML = `
+                <span class="icon">${success ? '✅' : '❌'}</span>
+                <span><strong>${name}</strong> ${details}</span>
+            `;
+            container.appendChild(div);
+            return success;
+        }
+
+        let totalTests = 0;
+        let passedTests = 0;
+
+        function runTest(containerId, name, testFunction, details = '') {
+            totalTests++;
+            try {
+                const result = testFunction();
+                if (result) passedTests++;
+                addTestResult(containerId, name, result, details);
+                return result;
+            } catch (error) {
+                addTestResult(containerId, name, false, `Error: ${error.message}`);
+                return false;
+            }
+        }
+
+        // Run tests after DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🧪 Running module tests...');
+
+            // Configuration tests
+            runTest('config-tests', 'planets.js', () => typeof PLANETS !== 'undefined', 
+                   `- ${Object.keys(PLANETS || {}).length} planets defined`);
+            runTest('config-tests', 'settings.js', () => typeof APP_CONFIG !== 'undefined',
+                   '- App configuration loaded');
+            runTest('config-tests', 'defaults.js', () => typeof DEFAULT_SPEEDS !== 'undefined',
+                   `- ${Object.keys(DEFAULT_SPEEDS || {}).length} default speeds`);
+
+            // Core system tests
+            runTest('core-tests', 'sceneManager.js', () => typeof SceneManager !== 'undefined',
+                   '- Scene management class');
+            runTest('core-tests', 'planetFactory.js', () => typeof PlanetFactory !== 'undefined',
+                   '- Planet creation factory');
+            runTest('core-tests', 'planetManager.js', () => typeof PlanetManager !== 'undefined',
+                   '- Planet collection manager');
+
+            // Animation tests
+            runTest('animation-tests', 'animationController.js', () => typeof AnimationController !== 'undefined',
+                   '- Animation timing control');
+            runTest('animation-tests', 'orbitalCalculator.js', () => typeof OrbitalCalculator !== 'undefined',
+                   '- Orbital mechanics calculator');
+
+            // UI tests
+            runTest('ui-tests', 'controlPanel.js', () => typeof ControlPanel !== 'undefined',
+                   '- Speed control interface');
+            runTest('ui-tests', 'headerControls.js', () => typeof HeaderControls !== 'undefined',
+                   '- Header button controls');
+            runTest('ui-tests', 'tooltipManager.js', () => typeof TooltipManager !== 'undefined',
+                   '- Planet information tooltips');
+
+            // Utility tests
+            runTest('utils-tests', 'interactionHandler.js', () => typeof InteractionHandler !== 'undefined',
+                   '- Mouse/touch interaction');
+            runTest('utils-tests', 'starfieldGenerator.js', () => typeof StarfieldGenerator !== 'undefined',
+                   '- Background stars');
+            runTest('utils-tests', 'cameraController.js', () => typeof CameraController !== 'undefined',
+                   '- Camera movement control');
+            runTest('utils-tests', 'notificationSystem.js', () => typeof NotificationSystem !== 'undefined',
+                   '- User notifications');
+            runTest('utils-tests', 'keyboardHandler.js', () => typeof KeyboardHandler !== 'undefined',
+                   '- Keyboard shortcuts');
+
+            // App tests
+            runTest('app-tests', 'app.js', () => typeof SolarSystemApp !== 'undefined',
+                   '- Main application coordinator');
+            runTest('app-tests', 'init.js', () => typeof initializeApplication !== 'undefined',
+                   '- Application bootstrap');
+
+            // Summary
+            const successRate = Math.round((passedTests / totalTests) * 100);
+            document.getElementById('summary').innerHTML = `
+                <div class="test-result ${passedTests === totalTests ? 'success' : 'error'}">
+                    <span class="icon">${passedTests === totalTests ? '🎉' : '⚠️'}</span>
+                    <span><strong>Tests Complete:</strong> 
+                        <span class="count">${passedTests}/${totalTests}</span> passed 
+                        (<span class="count">${successRate}%</span>)
+                    </span>
+                </div>
+            `;
+
+            if (passedTests === totalTests) {
+                document.getElementById('summary').innerHTML += `
+                    <div class="test-result success">
+                        <span class="icon">🚀</span>
+                        <span><strong>Ready to Launch!</strong> All modules loaded successfully. 
+                               <a href="index.html" style="color: #ffeb3b;">Open Solar System →</a>
+                        </span>
+                    </div>
+                `;
+            }
+
+            console.log(`✅ Module tests complete: ${passedTests}/${totalTests} passed`);
+        });
+    </script>
+</body>
+</html>
